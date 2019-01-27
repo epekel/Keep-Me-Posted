@@ -18,23 +18,17 @@ const db = firebase.firestore(app);
 
 /**
  * @param {string} number
- * @param {string} location
  */
-module.exports = async (number, location, context) => {
+module.exports = async (number, context) => {
     let usersRef = db.collection('users').doc(number);
     return usersRef.get().then((snapshot) => {
         if (!snapshot.exists) {
-            return Promise.reject(`Phone number ${number} not found`);
+            return Promise.reject("User does not exist");
         }
 
-        let data = {
-            phoneNumber: number,
-            location: location
-            }
-
-        return usersRef.set(data, { merge: true });
+        return usersRef.delete();
     }).then(() => {
-        return `Location for ${number} updated to ${location}.`;
+        return `User ${number} deleted.`;
     }).catch((err) => {
         return err;
     });
