@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let env = process.env;
 
 const firebase = require('firebase');
@@ -14,6 +15,13 @@ const bodyParser = require('body-parser');
 
 const express_app = express();
 
+=======
+const env = process.env;
+
+const firebase = require('firebase');
+const twilio = require('twilio')(env.twilioSid, env.twilioAuth);
+const lib = require('lib')({token: env.STDLIB_LIBRARY_TOKEN});
+>>>>>>> cf0e5f93710ace0933e36c6361be0d53dc4827ab
 
 firebase.initializeApp({
     apiKey: env.firebaseApiKey,
@@ -24,18 +32,26 @@ firebase.initializeApp({
     messagingSenderId: env.firebaseMessagingSenderId
 }, 'eventsApp');
 
-let app = firebase.app("eventsApp");
-let db = firebase.firestore(app);
+const app = firebase.app("eventsApp");
+const db = firebase.firestore(app);
 
 /**
  * @param {string} phoneNumber
  * @param {string} location
  */
+<<<<<<< HEAD
 module.exports = async (phoneNumber, keyword, context) => {
    let usersRef = await db.collection('users').doc(phoneNumber);
    let data = {
      phoneNumber: phoneNumber,
      location: location
+=======
+module.exports = async (name, context) => {
+    let usersRef = db.collection('users').doc('+17789879001');
+    let data = {
+     phoneNumber: '+17789879001',
+     location: 'Vancouver'
+>>>>>>> cf0e5f93710ace0933e36c6361be0d53dc4827ab
    }
 
    return setDoc = usersRef.set(data);
