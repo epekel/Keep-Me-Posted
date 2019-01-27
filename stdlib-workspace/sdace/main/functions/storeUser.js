@@ -33,7 +33,8 @@ module.exports = async (phoneNumber, location, context) => {
    let usersRef = await db.collection('users').doc(phoneNumber);
    let data = {
      phoneNumber: phoneNumber,
-     location: location
+     location: location,
+     keywords: []
    }
 
    // let twilioPhoneNumber = phoneNumber;

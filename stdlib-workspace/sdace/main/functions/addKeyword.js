@@ -19,14 +19,13 @@ const db = firebase.firestore(app);
 
 /**
  * @param {string} phoneNumber
- * @param {string} location
+ * @param {string} keyword
  */
 module.exports = async (phoneNumber, keyword, context) => {
-   let usersRef = await db.collection('users').doc(phoneNumber);
-   let data = {
-     phoneNumber: phoneNumber,
-     location: location
-   }
+  let data = {
+    keyword: keyword
+  }
+   let usersRef = await db.collection('users').doc(phoneNumber).collection('keywords').add(data);
 
-   return setDoc = usersRef.set(data);
+   return "Keyword is added to the collection";
   };
