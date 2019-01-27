@@ -107,10 +107,10 @@ var analyzeResponses = function (responses) {
                 console.log(event);
                 console.log(event.performers);
                 result[keyword] = {
-                    title: event.title,
-                    date: event["start_time"],
-                    performerName: event.performers != undefined ? event.performers[0].performer[0].name : "",
-                    url: event.url,
+                    title: event.title[0],
+                    date: event["start_time"][0],
+                    performerName: event.performers != undefined ? event.performers[0].performer[0].name[0] : "",
+                    url: event.url[0],
                 }
                 // for now, assume first result is the best
                 break;
@@ -121,4 +121,4 @@ var analyzeResponses = function (responses) {
     return result;
 };
 
-var concertSearch = searchEvents(["Justin Timberlake", "Carrie Underwood"], "Vancouver");
+var concertSearch = searchEvents(["Justin Timberlake", "Carrie Underwood", "asdasdasdasdasd"], "Vancouver");
