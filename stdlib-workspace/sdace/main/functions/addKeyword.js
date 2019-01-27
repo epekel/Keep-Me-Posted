@@ -8,16 +8,24 @@ firebase.initializeApp({
     apiKey: env.firebaseApiKey,
     authDomain: env.firebaseAuthDomain,
     databaseURL: env.firebaseDatabaseURL,
+    projectId: env.firebaseProjectId,
     storageBucket: env.firebaseStorageBucket,
     messagingSenderId: env.firebaseMessagingSenderId
 }, 'eventsApp');
 
-let app = firebase.app('eventsApp');
-let database = firebase.database(app);
+let app = firebase.app("eventsApp");
+let db = firebase.firestore(app);
 
 /**
  * @param {string} name
  */
 module.exports = async (name, context) => {
-    return name;
+    let usersRef = db.collection('users').doc('+17789879001');
+   let data = {
+     phoneNumber: '+17789879001',
+     location: 'Vancouver'
+   }
+
+   var setDoc = usersRef.set(data);
+   return setDoc;
   };
