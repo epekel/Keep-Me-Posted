@@ -1,9 +1,7 @@
 let env = process.env;
 
 const firebase = require('firebase');
-const accountSid = 'AC589a7c5aa857b895a017995a24931d30';
-const authToken = 'd89fde45b1049ea1590ca3efab6ed7a9';
-const twilio = require('twilio')(accountSid, authToken);
+const twilio = require('twilio')(env.twilioSid, env.twilioAuth);
 const lib = require('lib')({token: env.STDLIB_LIBRARY_TOKEN});
 const sms = lib.utils.sms['@1.0.9'];
 
