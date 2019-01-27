@@ -10,12 +10,14 @@ firebase.initializeApp({
     databaseURL: env.firebaseDatabaseURL,
     storageBucket: env.firebaseStorageBucket,
     messagingSenderId: env.firebaseMessagingSenderId
-});
-console.log(firebase.database())
+}, 'eventsApp');
+
+let app = firebase.app('eventsApp');
+let database = firebase.database(app);
 
 /**
  * @param {string} name
  */
 module.exports = async (name, context) => {
-    //return firebase.app.name;
+    return name;
   };
