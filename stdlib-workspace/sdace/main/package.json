@@ -4,7 +4,10 @@
   "description": "",
   "author": "sdace <sdallen997@gmail.com>",
   "main": "functions/__main__.js",
-  "dependencies": {},
+  "dependencies": {
+    "firebase": "^5.8.1",
+    "twilio": "^3.27.1"
+  },
   "private": true,
   "stdlib": {
     "build": "faaslang",
